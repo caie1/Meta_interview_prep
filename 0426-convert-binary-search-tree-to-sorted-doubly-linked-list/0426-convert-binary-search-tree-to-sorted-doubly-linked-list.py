@@ -1,13 +1,11 @@
 """
-# Definition for a Node.
-class Node(object):
-    def __init__(self, val, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
+    Inorder traversal for sorted traversal through tree. If we are travelling from root to 
+    left to find the leftmost smallest element, then self.last will be None, which makes us 
+    figure out self.first as that smallest elemennt. Then before going for right traversal, 
+    update the self.last as last visited element so we can fix the right side
 """
 
-class Solution(object):
+class Solution(object): # T: O(N) if tree is balanced then S: O(logN) if skewed tree S: O(N)
     def __init__(self):
         
         self.first = None
