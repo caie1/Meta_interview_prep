@@ -5,7 +5,9 @@ class Solution(object):
         :rtype: int
         """
         """
-            Run dfs to precompute areas of existing islands first
+            Run dfs to precompute areas of existing islands first with labeling them
+            Run 4 directional bfs on each 0s to figure if we are hitting any of the island, if so 
+            then calculate the max area for that 0
         
         """
         self.islandId = -1
