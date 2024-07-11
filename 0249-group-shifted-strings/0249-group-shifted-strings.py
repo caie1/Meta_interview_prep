@@ -18,10 +18,4 @@ class Solution(object):
                     charDiff.append( diff % 26)
                 charMap[tuple(charDiff)].append(string)
         
-        res = []
-        
-        for v in charMap.values():
-            res.append(v)
-        
-        return res
-        
+        return charMap.values()
