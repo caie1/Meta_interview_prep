@@ -1,5 +1,10 @@
-class Solution:
-    def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
+class Solution(object):
+    def kClosest(self, points, k):
+        """
+        :type points: List[List[int]]
+        :type k: int
+        :rtype: List[List[int]]
+        """
         res=[]
         if k==0:
             return res
