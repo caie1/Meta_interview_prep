@@ -5,6 +5,25 @@ class Solution(object):
         :type logs: List[str]
         :rtype: List[int]
         """
+        # More straightforward solution
+        result = [0]*n
+        stack = []
+        for log in logs:
+            splitLog = log.split(':')
+            funcID = int(splitLog[0])
+            status = splitLog[1]
+            time = int(splitLog[2])
+            if status == 'start':
+                stack.append((funcID, time))
+            else:
+                executionTime = time - stack.pop()[1] + 1
+                result[funcID] += executionTime
+                if stack:
+                    result[stack[-1][0]] -= executionTime
+        return result
+        
+        
+        # Simpler Solution
         stack = []
         res = [0]*n
         
