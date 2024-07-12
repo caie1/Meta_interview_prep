@@ -1,15 +1,13 @@
 class Solution:
 
     def __init__(self, nums: List[int]):
-        
-        self.intMap = defaultdict(list)        
+        self.num_idx = defaultdict(list)
         for i, num in enumerate(nums):
-            self.intMap[num].append(i)
-            
+            self.num_idx[num].append(i)
+
     def pick(self, target: int) -> int:
-        L = len(self.intMap[target])
-        
-        return self.intMap[target][int(random.uniform(0,L))]
+        return random.choice(self.num_idx[target])
+            
 
 
 # Your Solution object will be instantiated and called as such:
