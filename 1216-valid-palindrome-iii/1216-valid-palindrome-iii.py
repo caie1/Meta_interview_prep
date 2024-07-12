@@ -6,7 +6,7 @@ class Solution(object):
         :rtype: bool
         """
         
-        # Using longest palindromic subsequence solution 
+        # Using longest common subsequence solution 
         
         n=len(s)
         t=s[::-1]
