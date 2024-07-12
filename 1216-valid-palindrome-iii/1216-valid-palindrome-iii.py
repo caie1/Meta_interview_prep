@@ -5,6 +5,9 @@ class Solution(object):
         :type k: int
         :rtype: bool
         """
+        
+        # Using longest palindromic subsequence solution 
+        
         n=len(s)
         t=s[::-1]
 
@@ -23,11 +26,7 @@ class Solution(object):
         return n - prev[n] <= k                   
         
         
-        
-        
-        
-        
-        
+        # DP - memoization from scratch using valid palindrome-ii idea 
         l, r = 0, len(s) - 1
         memo = {}
         def helper(l, r, k):
