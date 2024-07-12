@@ -9,8 +9,8 @@ class Solution(object):
         if nums[-1] > nums[-2]:
             return len(nums) - 1
             
-        l = 1
-        r = len(nums) - 2
+        l = 1 # l should start from 1 because we are comparing nums[mid - 1]
+        r = len(nums) - 2 # r ends at n-2 because we are comparing nums[mid + 1]
         
         while l <= r:
             mid = (l + r) // 2
