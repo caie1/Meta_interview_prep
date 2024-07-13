@@ -12,7 +12,9 @@ class Solution(object):
         t=s[::-1]
 
         #dp=[[0]*(n+1) for _ in xrange(n+1)]
-
+        # Find longest common subsequece for string and its reversed version which will be 
+        # longest palindromic subsequence, then substract it from length of the string which
+        # gives us maximum possible removal required to create palindromic substring
         prev=[0]*(n+1)
 
         for i in xrange(1,n+1):
