@@ -9,9 +9,9 @@ class Solution(object):
         i = 0
         
         while i < len(intervals) - 1:
-            if intervals[i][1] < intervals[i+1][0]:
+            if intervals[i][1] < intervals[i+1][0]: # If [1,3],[4,6] then no issue
                 res.append(intervals[i])
-            else:
+            else: # else we modify the next interval
                 intervals[i+1][0] = min(intervals[i][0], intervals[i+1][0])
                 intervals[i+1][1] = max(intervals[i][1], intervals[i+1][1])
             i += 1
