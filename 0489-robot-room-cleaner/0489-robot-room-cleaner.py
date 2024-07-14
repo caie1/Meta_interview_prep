@@ -39,6 +39,11 @@ class Solution(object):
         """
         Always move in clockwise manner, up -> right -> down -> left. Functions will return in
         the same order
+        Intuition -> Go forward, clean the cell and mark that cell. At the obstacle turn right,           again go forward. => Always turn right at the obstacle and go forward. 
+        So for given cell, if robot moves forward and hits the dead end then robot will clean that
+        dead end square and comes back to the original cell after finishing backTrack() function 
+        for that dead end cell via goBack() on line 76.
+
         """
         directions = [[-1,0],[0,1],[1,0],[0,-1]]        
         visit = set()
