@@ -5,32 +5,16 @@ class Solution(object):
         :type order: str
         :rtype: bool
         """
-        charMap = defaultdict(int)
+        charMap = {char: i for i, char in enumerate(order)}
         
-        for i in xrange(len(order)):
-            charMap[order[i]] = i
+        def is_sorted(w1, w2):
+            for c1, c2 in zip(w1, w2):
+                if charMap[c1] != charMap[c2]:
+                    return charMap[c1] < charMap[c2]
+            return len(w1) <= len(w2)
         
-        
-        
-        for i in xrange(len(words) - 1):
-            w1 = words[i]
-            w2 = words[i + 1]
-            
-            l = min(len(w1), len(w2))
-            if charMap[w1[0]] > charMap[w2[0]]:
+        for i in range(len(words) - 1):
+            if not is_sorted(words[i], words[i + 1]):
                 return False
-            elif charMap[w1[0]] < charMap[w2[0]]:
-                continue
-            else:
-                j = 0
-                l = min(len(w1), len(w2))
-                while j < l and w1[j] == w2[j]:
-                    j += 1
-                    if j < l and charMap[w1[j]] > charMap[w2[j]]:
-                        return False
-                if j == len(w2) and len(w2) < len(w1):
-                    return False
+        
         return True
-            
-            
-            
