@@ -7,7 +7,9 @@ class Solution(object):
         :rtype: int
         """
         """
-         
+         If child had an apple then it will return non zero time value which should be added
+         twice or if the child node doesn't have an apple but any node following child has 
+         an apple then again childtime will be positive and hence should be added twice
         """
         adj = {i:[] for i in range(n)}
         for par, child in edges:
