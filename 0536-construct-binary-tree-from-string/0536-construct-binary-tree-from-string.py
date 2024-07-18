@@ -5,7 +5,6 @@
 #         self.left = left
 #         self.right = right
 class Solution(object):
-    
     def str2tree(self, s):
         """
         :type s: str
@@ -47,5 +46,3 @@ class Solution(object):
             i += 1
         return root
             
-        
-        
