@@ -6,6 +6,9 @@ class Solution(object):
         :rtype: int
         """
         # Binary Search Optimization
+        # Get Rank Function T:O(n)
+        # Main binary search T: O(max - min)
+        # Overall T: O(max - min)*O(n)
         def getRank(num):
             row, col = len(matrix) - 1, 0
             rank = 0
