@@ -1,19 +1,12 @@
 class Solution(object):
-    def findSpecialInteger(self, nums):
+    def findSpecialInteger(self, arr):
         """
         :type arr: List[int]
         :rtype: int
         """
-        if len(nums) == 1:
-            return nums[0]
-        count = 1
-        threshold = len(nums) // 4
-        
-        for i in xrange(1, len(nums)):
-            if nums[i] == nums[i - 1]:
-                count += 1
-            else:
-                count = 1
-            if count > threshold:
-                    return nums[i]
- 
+         ## Time: O(N) Space: O(1)
+        size = len(arr) // 4
+        for i in range(len(arr) - size):
+            if arr[i] == arr[i + size]:
+                return arr[i]
+        return -1
