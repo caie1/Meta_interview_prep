@@ -5,16 +5,13 @@ class Solution(object):
         :rtype: bool
         """
         # Greedy Solution
-        maxSoFar = 0
-        n = len(nums)
-        i = 0
+        maxInd = 0
         
-        while i < n:
-            maxSoFar = max(maxSoFar, i + nums[i])
-            if maxSoFar >= n - 1:
-                return True
-            i += 1
-            if i > maxSoFar:
+        for i in xrange(len(nums)):
+            if i > maxInd:
                 return False
+            maxInd = max( maxInd, i + nums[i])
+        
+        return True
         
         
