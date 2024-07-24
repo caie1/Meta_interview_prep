@@ -5,6 +5,17 @@ class Solution(object):
         :rtype: List[int]
         """
         n = len(nums)
+        left_prod, r = [1]*n, 1
+        for i in range(1, n):
+            left_prod[i] = nums[i - 1] * left_prod[i - 1]
+        for i in range(n - 1, -1, -1):
+            left_prod[i] *= r
+            r *= nums[i]
+        return left_prod
+
+        
+        
+        n = len(nums)
         leftProduct = [1]*n
         rightProduct = [1]*n
         leftProduct[0] = nums[0]
