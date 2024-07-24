@@ -4,7 +4,19 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-                #Tabulation
+        #Space Optimization
+        prev2 = prev1 = 0
+        prev1 = 1
+        
+        for i in xrange(1, n+1):
+            cur = prev1
+            if i > 1:
+                cur += prev2
+            prev2 = prev1
+            prev1 = cur
+        return prev1
+        
+        #Tabulation
         dp = [0]*(n+1)
         dp[0] = 1
         
