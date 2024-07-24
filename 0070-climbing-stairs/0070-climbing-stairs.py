@@ -4,6 +4,19 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
+                #Tabulation
+        dp = [0]*(n+1)
+        dp[0] = 1
+        
+        for i in xrange(1,n+1):
+            oneJump = dp[i - 1]
+            twoJump = 0
+            if i > 1:
+                twoJump = dp[i - 2]
+            dp[i] = oneJump + twoJump
+        return dp[n]
+    
+        # Memoization
         memo = {0:1}
         def helper(m):
             if m < 0:
@@ -15,3 +28,4 @@ class Solution(object):
             memo[m] = oneJump + TwoJump
             return memo[m]
         return helper(n)
+    
