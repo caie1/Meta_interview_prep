@@ -4,11 +4,11 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        nums = set(nums)
-        res = 1
-        
-        while res in nums:
-            res += 1
-        return res
-        
-        
+        numSet = set(nums)
+        n = 1
+        maxNum = max(nums)
+        while n <= maxNum:
+            if n not in numSet:
+                return n
+            n += 1
+        return n
