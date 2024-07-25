@@ -5,6 +5,15 @@ class Solution(object):
         :type val: int
         :rtype: int
         """
+        
+        ###Time O(n)  Space O(1)
+        pos = 0
+        for i in range(len(nums)):
+            if nums[i] != val:
+                nums[pos], nums[i] = nums[i], nums[pos]
+                pos += 1
+        return pos
+    
         count = 0
         n = len(nums)
         pos = 0
