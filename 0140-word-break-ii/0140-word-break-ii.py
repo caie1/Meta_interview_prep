@@ -6,15 +6,16 @@ class Solution(object):
         :rtype: List[str]
         """
         wordDict = set(wordDict)
-        result = []
+        res = []
         
         def helper(ind, path):
+            # Base Case
             if ind == len(s):
-                result.append(" ".join(path))
-                
+                res.append(" ".join(path))
+                return None
+            
             for i in xrange(ind, len(s)):
                 if s[ind : i + 1] in wordDict:
                     helper(i + 1, path + [s[ind : i + 1]])
-        
         helper(0, [])
-        return result
+        return res
