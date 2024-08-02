@@ -7,6 +7,42 @@ class Solution(object):
         """
         candidates.sort()
         res = []
+        def helper(ind, path, target):
+            #Base Case
+            if target == 0:
+                res.append(path)
+                return
+            
+            for i in xrange(ind, len(candidates)):
+                if i > ind and candidates[i] == candidates[i - 1]:
+                    continue
+                if candidates[i] > target:
+                    break
+                helper(i + 1, path + [candidates[i]], target - candidates[i])
+        
+        helper(0, [], target)
+        return res
+        
+        
+        
+        
+        
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        candidates.sort()
+        res = []
         
         def helper(ind, path, target):
             #Base case
