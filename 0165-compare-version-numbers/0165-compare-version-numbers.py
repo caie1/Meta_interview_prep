@@ -5,6 +5,8 @@ class Solution(object):
         :type version2: str
         :rtype: int
         """
+        #T: O(N + M + max(N,M))
+        #S: O(N + M)
         v1 = version1.split(".")
         v2 = version2.split(".")
         
