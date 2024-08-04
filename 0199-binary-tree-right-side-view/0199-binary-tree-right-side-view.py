@@ -10,13 +10,15 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[int]
         """
-        result = []
+        res = []
+        
         def helper(node, level):
             if not node:
                 return None
-            if level == len(result):
-                result.append(node.val)
+            if len(res) == level:
+                res.append(node.val)
             helper(node.right, level + 1)
             helper(node.left, level + 1)
+            
         helper(root, 0)
-        return result
+        return res
