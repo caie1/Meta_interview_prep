@@ -14,13 +14,11 @@ class Solution(object):
         :type node: Node
         :rtype: Node
         """
-        # This is hare rabbit problem type question
-        # Intuition: Remember the Two branched LinkedList merge point detection method without         sets 
         pPrime = p
         qPrime = q
         
-        while pPrime != qPrime:
-            pPrime = pPrime.parent if pPrime else q
-            qPrime = qPrime.parent if qPrime else p
+        while (pPrime != qPrime):
+            pPrime = pPrime.parent if pPrime.parent else q
+            qPrime = qPrime.parent if qPrime.parent else p
         
         return pPrime
