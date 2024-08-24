@@ -26,4 +26,4 @@ class Solution(object):
             return True
         
         
-        return dfs(0, -1) and len(visited) == n
+        return dfs(0, -1) and len(visited) == n # All edges should make a single component graph, if we ahve multiple component graph structgure, it aint a binary tree and length of visited will be less than number of nodes
