@@ -53,6 +53,63 @@ class LRUCache(object):
             self.remove(lru)
             del self.cache[lru.key]
 
+#Unit testing module for above code
+import unittest
+
+class TestLRUCache(unittest.TestCase):
+    def setUp(self):
+        """Set up the test environment before each test."""
+        self.cache = LRUCache(2)  # Create an LRUCache with capacity 2
+
+    def test_put_and_get(self):
+        """Test basic put and get functionality."""
+        self.cache.put(1, 1)
+        self.cache.put(2, 2)
+        self.assertEqual(self.cache.get(1), 1)  # Should return 1
+        self.cache.put(3, 3)  # Evicts key 2
+        self.assertEqual(self.cache.get(2), -1)  # Should return -1 (not found)
+        self.cache.put(4, 4)  # Evicts key 1
+        self.assertEqual(self.cache.get(1), -1)  # Should return -1 (not found)
+        self.assertEqual(self.cache.get(3), 3)  # Should return 3
+        self.assertEqual(self.cache.get(4), 4)  # Should return 4
+
+    def test_update_existing_key(self):
+        """Test that updating an existing key changes the value and order."""
+        self.cache.put(1, 1)
+        self.cache.put(2, 2)
+        self.cache.put(1, 10)  # Update key 1 to 10
+        self.assertEqual(self.cache.get(1), 10)  # Should return updated value 10
+        self.cache.put(3, 3)  # Evicts key 2, not key 1
+        self.assertEqual(self.cache.get(2), -1)  # Should return -1 (not found)
+        self.assertEqual(self.cache.get(1), 10)  # Should still return 10
+        self.assertEqual(self.cache.get(3), 3)  # Should return 3
+
+    def test_cache_eviction_order(self):
+        """Test that cache evicts in the correct order."""
+        self.cache.put(1, 1)
+        self.cache.put(2, 2)
+        self.cache.get(1)  # Access key 1
+        self.cache.put(3, 3)  # Should evict key 2 (least recently used)
+        self.assertEqual(self.cache.get(2), -1)  # Should return -1 (not found)
+        self.assertEqual(self.cache.get(1), 1)  # Should return 1
+        self.assertEqual(self.cache.get(3), 3)  # Should return 3
+
+    def test_capacity_one(self):
+        """Test behavior with a cache capacity of one."""
+        self.cache = LRUCache(1)  # Create an LRUCache with capacity 1
+        self.cache.put(1, 1)
+        self.assertEqual(self.cache.get(1), 1)  # Should return 1
+        self.cache.put(2, 2)  # Evicts key 1
+        self.assertEqual(self.cache.get(1), -1)  # Should return -1 (not found)
+        self.assertEqual(self.cache.get(2), 2)  # Should return 2
+
+    def test_invalid_key(self):
+        """Test get with an invalid key."""
+        self.assertEqual(self.cache.get(999), -1)  # Should return -1 (not found)
+
+if __name__ == '__main__':
+    unittest.main()
+
 
 # Your LRUCache object will be instantiated and called as such:
 # obj = LRUCache(capacity)
