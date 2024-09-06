@@ -32,3 +32,5 @@ self.assertEqual(self.cache.get(3), 3)  # Should return 3
 def test_cache_eviction_order(self):
 """Test that cache evicts in the correct order."""
 self.cache.put(1, 1)
+self.cache.put(2, 2)
+self.cache.get(1)  # Access key 1
